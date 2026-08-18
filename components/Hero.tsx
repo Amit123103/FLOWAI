@@ -72,31 +72,30 @@ export default function Hero() {
         })}
       </div>
 
-      <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-4 sm:pt-6">
-        {/* Hero Copy & Actions */}
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-
+      <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-2 sm:pt-4">
+        {/* Hero Copy & Actions in a Frosted Glass Card */}
+        <div className="max-w-3xl mx-auto text-center space-y-5 p-6 sm:p-8 rounded-3xl bg-slate-950/45 backdrop-blur-md border border-white/15 shadow-2xl">
           {/* Main Heading */}
           <h1
             id="hero-heading"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] [text-shadow:_0_4px_24px_rgba(0,0,0,0.85),_0_1px_3px_rgba(0,0,0,0.9)]"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold tracking-tight text-white leading-snug"
           >
             Ship AI products{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-brand-200 to-amber-200 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-pink-300 to-amber-300 font-extrabold">
               without the infrastructure headache.
             </span>
           </h1>
 
           {/* Supporting Text */}
-          <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-medium leading-relaxed [text-shadow:_0_2px_12px_rgba(0,0,0,0.9),_0_1px_2px_rgba(0,0,0,0.9)]">
+          <p className="text-sm sm:text-base md:text-lg text-slate-200/90 max-w-xl mx-auto font-normal leading-relaxed">
             Build, evaluate, deploy, and monitor AI applications from one focused developer workspace.
           </p>
 
           {/* CTA Group */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          <div className="pt-1 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="#cta"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-2xl hover:shadow-brand-600/50 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400 border border-brand-400/40"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-lg shadow-brand-900/50 hover:shadow-brand-600/40 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400 border border-brand-400/40"
             >
               <span>Start building</span>
               <ArrowRight className="w-4 h-4" />
@@ -104,7 +103,7 @@ export default function Hero() {
 
             <a
               href="#dashboard-preview"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-white/30 hover:border-brand-400/60 text-white font-medium text-sm shadow-xl transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-brand-400"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 backdrop-blur-sm border border-white/20 hover:border-brand-400/50 text-slate-200 hover:text-white font-medium text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-brand-400"
             >
               <Terminal className="w-4 h-4 text-brand-400" />
               <span>Explore the workspace</span>
@@ -112,7 +111,7 @@ export default function Hero() {
           </div>
 
           {/* Small Supporting Line */}
-          <div className="pt-1 text-xs text-white/90 font-mono tracking-wide [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
+          <div className="pt-0.5 text-xs text-slate-300/80 font-mono tracking-wide">
             Built for developers who want to move from experiment to production.
           </div>
         </div>
