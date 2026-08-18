@@ -41,7 +41,14 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
       className="fixed inset-0 z-50 md:hidden bg-white/98 backdrop-blur-2xl flex flex-col justify-between p-6 animate-in fade-in zoom-in-95 duration-200"
     >
       <div className="flex items-center justify-between border-b border-slate-200 pb-5">
-        <span className="font-bold text-lg tracking-tight text-slate-900">FlowAI</span>
+        <div className="flex items-center gap-2.5">
+          <img
+            src="/images/logo.png"
+            alt="FlowAI Logo"
+            className="w-8 h-8 rounded-lg object-cover shadow-sm border border-slate-200"
+          />
+          <span className="font-bold text-lg tracking-tight text-slate-900">FlowAI</span>
+        </div>
         <button
           type="button"
           onClick={onClose}

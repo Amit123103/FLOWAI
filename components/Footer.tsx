@@ -28,9 +28,11 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center">
-                <Layers className="w-3.5 h-3.5 text-brand-600" />
-              </div>
+              <img
+                src="/images/logo.png"
+                alt="FlowAI Logo"
+                className="w-8 h-8 rounded-lg object-cover shadow-sm border border-slate-200"
+              />
               <span className="font-bold text-base text-slate-900 tracking-tight">FlowAI</span>
             </div>
             <p className="text-slate-600 max-w-sm text-xs leading-relaxed">

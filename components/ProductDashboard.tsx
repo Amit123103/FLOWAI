@@ -29,7 +29,7 @@ export default function ProductDashboard() {
         {/* Project Selector & Status */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <img src="/images/logo.png" alt="FlowAI Logo" className="w-6 h-6 rounded object-cover" />
             <span className="font-bold text-slate-900 tracking-tight">FlowAI</span>
           </div>
           <span className="text-slate-300 font-light">/</span>

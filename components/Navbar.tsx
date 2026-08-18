@@ -45,15 +45,20 @@ export default function Navbar({ onLogoClick }: NavbarProps) {
             <button
               onClick={onLogoClick}
               type="button"
-              className="group flex items-center gap-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 rounded-md"
+              className="group flex items-center gap-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 rounded-md"
               aria-label="FlowAI Home"
             >
-              <div className="w-8 h-8 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center transition-all duration-200 group-hover:border-brand-300 group-hover:bg-brand-100">
-                <Layers className="w-4 h-4 text-brand-600 transition-transform duration-300 group-hover:rotate-6" />
-              </div>
+              <img
+                src="/images/logo.png"
+                alt="FlowAI Logo"
+                className="w-9 h-9 rounded-lg object-cover shadow-sm border border-slate-200 transition-transform duration-300 group-hover:scale-105"
+              />
               <div className="flex flex-col">
-                <span className="font-bold text-lg tracking-tight text-slate-900 flex items-center gap-1.5">
+                <span className="font-bold text-lg tracking-tight text-slate-900 flex items-center gap-1.5 leading-none">
                   FlowAI
+                </span>
+                <span className="text-[9px] font-mono text-slate-400 font-medium tracking-wide">
+                  WORKSPACE
                 </span>
               </div>
             </button>
