@@ -33,7 +33,7 @@ export default function ProductDashboard() {
             <span className="font-bold text-slate-900 tracking-tight">FlowAI</span>
           </div>
           <span className="text-slate-300 font-light">/</span>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 hover:text-slate-900 cursor-pointer shadow-sm transition-colors">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 hover:text-slate-900 cursor-pointer shadow-sm transition-colors hover:border-brand-300">
             <span className="text-slate-400">Project:</span>
             <span className="font-mono text-[11px] text-brand-700 font-bold">Aurora</span>
             <ChevronDown className="w-3 h-3 text-slate-400" />
@@ -52,7 +52,7 @@ export default function ProductDashboard() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-medium shadow-sm transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white hover:bg-brand-50/60 border border-slate-200 hover:border-brand-300 text-slate-700 hover:text-brand-700 text-[11px] font-medium shadow-sm transition-colors"
           >
             <RefreshCw className="w-3 h-3 text-brand-600" />
             <span className="hidden sm:inline">Sync Graph</span>
@@ -90,16 +90,16 @@ export default function ProductDashboard() {
                 </p>
               </div>
 
-              {/* View Switcher */}
+              {/* View Switcher Buttons in Maroon */}
               <div className="flex items-center gap-1 p-1 rounded-lg bg-slate-100 border border-slate-200 self-start">
                 <button
                   type="button"
                   onClick={() => setActiveTab("graph")}
                   className={cn(
-                    "px-3 py-1 text-xs font-semibold rounded-md transition-colors",
+                    "px-3 py-1 text-xs font-semibold rounded-md transition-all",
                     activeTab === "graph"
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-600 hover:text-slate-900"
+                      ? "bg-brand-600 hover:bg-brand-500 text-white shadow-sm"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
                   )}
                 >
                   Workflow
@@ -108,10 +108,10 @@ export default function ProductDashboard() {
                   type="button"
                   onClick={() => setActiveTab("runs")}
                   className={cn(
-                    "px-3 py-1 text-xs font-semibold rounded-md transition-colors",
+                    "px-3 py-1 text-xs font-semibold rounded-md transition-all",
                     activeTab === "runs"
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-600 hover:text-slate-900"
+                      ? "bg-brand-600 hover:bg-brand-500 text-white shadow-sm"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
                   )}
                 >
                   Recent Runs
