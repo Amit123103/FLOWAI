@@ -54,8 +54,97 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
   });
   const [copied, setCopied] = useState(false);
 
-  const activeNode =
-    nodes.find((n) => n.id === selectedNodeId) || nodes[1] || nodes[0];
+  const [showAddModal, setShowAddModal] = useState(false);
+
+  const NODE_TEMPLATES: WorkflowNodeItem[] = [
+    {
+      id: "rag",
+      title: "VECTOR DB",
+      subtitle: "RAG Retrieval",
+      badge: "Pinecone / Qdrant",
+      iconType: "database",
+      details: {
+        title: "Semantic Vector Retriever",
+        description: "Hybrid dense-sparse vector search across enterprise knowledge base embeddings.",
+        attributes: [
+          { label: "Top-K", value: "5 chunks" },
+          { label: "Index", value: "text-embedding-3-small" },
+          { label: "Similarity Threshold", value: "> 0.88", highlight: true },
+          { label: "Latency", value: "24ms", highlight: true },
+        ],
+        manifest: `vector_retrieval:\n  provider: "pinecone"\n  index: "kb-enterprise-v2"\n  top_k: 5\n  metric: "cosine"\n  rerank: "cohere-rerank-v3"`,
+      },
+    },
+    {
+      id: "sandbox",
+      title: "CODE SANDBOX",
+      subtitle: "Python WASM",
+      badge: "Secure MicroVM",
+      iconType: "code",
+      details: {
+        title: "Isolated Code Execution Sandbox",
+        description: "Executes LLM-generated code snippets in an isolated, secure sub-10ms microVM.",
+        attributes: [
+          { label: "Runtime", value: "Python 3.12 (WASM)" },
+          { label: "Timeout", value: "2500ms" },
+          { label: "Memory Limit", value: "128MB" },
+          { label: "Network Access", value: "Disabled (Safe)", highlight: true },
+        ],
+        manifest: `code_sandbox:\n  runtime: "python3.12-wasm"\n  timeout_ms: 2500\n  memory_mb: 128\n  allowed_modules: ["numpy", "pandas", "json", "math"]`,
+      },
+    },
+    {
+      id: "guardrail",
+      title: "GUARDRAIL",
+      subtitle: "Safety & PII",
+      badge: "Llama Guard",
+      iconType: "shield",
+      details: {
+        title: "Safety & Privacy Guardrails",
+        description: "Real-time moderation for PII redaction, prompt injection defense, and toxicity blocking.",
+        attributes: [
+          { label: "PII Masking", value: "SSN, Email, Cards", highlight: true },
+          { label: "Toxicity Filter", value: "Score < 0.05" },
+          { label: "Action on Breach", value: "Block & Log" },
+          { label: "Overhead", value: "8ms" },
+        ],
+        manifest: `guardrail:\n  pii_masking: ["email", "phone", "credit_card", "ssn"]\n  jailbreak_prevention: "strict"\n  toxicity_threshold: 0.05\n  fail_strategy: "redact_or_block"`,
+      },
+    },
+  ];
+
+  const handleAddNode = (template: WorkflowNodeItem) => {
+    const newNode = {
+      ...template,
+      id: `${template.id}-${Date.now()}` as any,
+    };
+    // Insert before deploy node if present, or at the end
+    setNodes((prev) => {
+      const deployIndex = prev.findIndex((n) => n.id.startsWith("deploy"));
+      if (deployIndex !== -1) {
+        const copy = [...prev];
+        copy.splice(deployIndex, 0, newNode);
+        return copy;
+      }
+      return [...prev, newNode];
+    });
+    onSelectNode(newNode.id);
+    setShowAddModal(false);
+  };
+
+  const handleRemoveNode = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (nodes.length <= 2) return;
+    setNodes((prev) => prev.filter((n) => n.id !== id));
+    if (selectedNodeId === id) {
+      onSelectNode(nodes[0].id);
+    }
+  };
+
+  const handleResetNodes = () => {
+    setNodes(WORKFLOW_NODES);
+    onSelectNode("model");
+  };
 
   const handleCopyOutput = () => {
     if (!outputStream) return;
@@ -68,43 +157,44 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
     if (isExecuting) return;
     setIsExecuting(true);
     setOutputStream("");
-    setExecutingNodeIndex(0);
 
-    // Step 1: Input Validation
-    setTimeout(() => {
-      setExecutingNodeIndex(1);
-      // Step 2: Model Generation (Streaming simulated output)
-      const fullText = selectedPreset.expectedOutput;
-      let currentLength = 0;
+    // Dynamic execution through all nodes in sequence
+    let currentStep = 0;
+    const totalSteps = nodes.length;
 
-      const streamInterval = setInterval(() => {
-        currentLength += Math.floor(Math.random() * 8) + 4;
-        if (currentLength >= fullText.length) {
-          setOutputStream(fullText);
-          clearInterval(streamInterval);
+    const stepInterval = setInterval(() => {
+      if (currentStep < totalSteps) {
+        setExecutingNodeIndex(currentStep);
 
-          // Step 3: Evaluation Gate
-          setExecutingNodeIndex(2);
-          setTimeout(() => {
-            // Step 4: Deploy & Edge
-            setExecutingNodeIndex(3);
-            setTimeout(() => {
-              setExecutingNodeIndex(null);
-              setIsExecuting(false);
-              setExecutionStats({
-                latencyMs: selectedModel.latencyMs + Math.floor(Math.random() * 40 - 20),
-                tokens: selectedPreset.tokens,
-                cost: selectedModel.costPer1k,
-                evalScore: +(0.985 + Math.random() * 0.014).toFixed(3),
-                status: "Success (100% Passed)",
-              });
-            }, 300);
-          }, 350);
-        } else {
-          setOutputStream(fullText.slice(0, currentLength));
+        // If it's a model node, stream simulated output tokens
+        if (nodes[currentStep].id.includes("model") || currentStep === 1) {
+          const fullText = selectedPreset.expectedOutput;
+          let currentLength = 0;
+          const streamInterval = setInterval(() => {
+            currentLength += Math.floor(Math.random() * 10) + 6;
+            if (currentLength >= fullText.length) {
+              setOutputStream(fullText);
+              clearInterval(streamInterval);
+            } else {
+              setOutputStream(fullText.slice(0, currentLength));
+            }
+          }, 20);
         }
-      }, 25);
-    }, 250);
+
+        currentStep++;
+      } else {
+        clearInterval(stepInterval);
+        setExecutingNodeIndex(null);
+        setIsExecuting(false);
+        setExecutionStats({
+          latencyMs: selectedModel.latencyMs + Math.floor(Math.random() * 30 - 15) + (nodes.length - 4) * 18,
+          tokens: selectedPreset.tokens,
+          cost: selectedModel.costPer1k,
+          evalScore: +(0.988 + Math.random() * 0.011).toFixed(3),
+          status: "Success (All Nodes Passed)",
+        });
+      }
+    }, 280);
   };
 
   const handleSelectPreset = (preset: PromptPreset) => {
