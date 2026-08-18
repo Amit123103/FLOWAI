@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import ProductDashboard from "./ProductDashboard";
-import { ArrowRight, Terminal, Sparkles, Pause, Play } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
 
 const HERO_BACKGROUNDS = [
   {
@@ -39,17 +39,14 @@ const HERO_BACKGROUNDS = [
 
 export default function Hero() {
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
-    if (!isPlaying) return;
-
     const interval = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
     }, 1500); // 1.5-second delay image transition
 
     return () => clearInterval(interval);
-  }, [isPlaying]);
+  }, []);
 
   return (
     <section className="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden" aria-labelledby="hero-heading">
@@ -75,53 +72,9 @@ export default function Hero() {
         })}
       </div>
 
-      <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Active Background Status / 6 Image Indicator Pill */}
-        <div className="flex items-center justify-center mb-6">
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-xl text-xs text-white font-mono">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-            </span>
-            <span className="text-brand-300 font-semibold uppercase tracking-wider text-[11px]">
-              Visual Node {currentIdx + 1}/6 (1.5s):
-            </span>
-            <span className="text-slate-100 hidden sm:inline">{HERO_BACKGROUNDS[currentIdx].title}</span>
-
-            {/* 6 Mini Step Indicators */}
-            <div className="flex items-center gap-1 ml-1.5 pl-2 border-l border-white/20">
-              {HERO_BACKGROUNDS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIdx(i)}
-                  title={`Switch to image ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === currentIdx ? "w-5 bg-brand-400" : "w-1.5 bg-white/40 hover:bg-white/70"
-                  }`}
-                  aria-label={`View background image ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Play/Pause Control */}
-            <button
-              onClick={() => setIsPlaying((p) => !p)}
-              className="ml-1 text-slate-300 hover:text-white transition-colors"
-              title={isPlaying ? "Pause 1.5s rotation" : "Play 1.5s rotation"}
-              aria-label={isPlaying ? "Pause rotation" : "Play rotation"}
-            >
-              {isPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3 text-brand-400" />}
-            </button>
-          </div>
-        </div>
-
+      <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-4 sm:pt-6">
         {/* Hero Copy & Actions */}
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-xs font-mono tracking-wider uppercase text-brand-300 shadow-xl font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-brand-400 animate-pulse" />
-            THE AI DEVELOPER WORKSPACE
-          </div>
 
           {/* Main Heading */}
           <h1
