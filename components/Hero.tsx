@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import ProductDashboard from "./ProductDashboard";
 import { ArrowRight, Terminal, Sparkles, Pause, Play } from "lucide-react";
 
