@@ -70,7 +70,7 @@ export default function FeatureCard({
                   Model
                 </span>
                 <span className="text-slate-400">→</span>
-                <span className="px-2 py-1 rounded bg-white border border-slate-200 text-indigo-700 font-bold shadow-xs">
+                <span className="px-2 py-1 rounded bg-white border border-slate-200 text-rose-700 font-bold shadow-xs">
                   Eval
                 </span>
               </div>
