@@ -45,7 +45,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
         <button
           type="button"
           onClick={onClose}
-          className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 focus-visible:ring-2 focus-visible:ring-brand-500"
+          className="p-2 rounded-lg text-slate-600 hover:text-brand-600 hover:bg-brand-50 border border-slate-200 focus-visible:ring-2 focus-visible:ring-brand-600"
           aria-label="Close navigation menu"
         >
           <X className="w-5 h-5" />
@@ -69,14 +69,14 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
         <a
           href="#dashboard-preview"
           onClick={onClose}
-          className="w-full text-center py-3 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl bg-slate-50"
+          className="w-full text-center py-3 text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200 rounded-xl bg-slate-50 hover:bg-brand-50/50"
         >
           Sign In
         </a>
         <a
           href="#cta"
           onClick={onClose}
-          className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white rounded-xl shadow-lg shadow-brand-600/20 transition-all"
+          className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white rounded-xl shadow-lg shadow-brand-600/25 transition-all"
         >
           <span>Start building</span>
           <ArrowUpRight className="w-4 h-4" />

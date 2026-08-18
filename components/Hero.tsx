@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <a
               href="#cta"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 hover:shadow-brand-600/35 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 hover:shadow-brand-600/35 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-600"
             >
               <span>Start building</span>
               <ArrowRight className="w-4 h-4" />
@@ -47,9 +47,9 @@ export default function Hero() {
 
             <a
               href="#dashboard-preview"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-medium text-sm shadow-sm transition-all duration-200 hover:border-slate-400 focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-brand-50/50 border border-slate-300 hover:border-brand-300 text-slate-800 font-medium text-sm shadow-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-600"
             >
-              <Terminal className="w-4 h-4 text-slate-500" />
+              <Terminal className="w-4 h-4 text-brand-600" />
               <span>Explore the workspace</span>
             </a>
           </div>

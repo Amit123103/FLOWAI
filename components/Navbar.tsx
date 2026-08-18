@@ -45,10 +45,10 @@ export default function Navbar({ onLogoClick }: NavbarProps) {
             <button
               onClick={onLogoClick}
               type="button"
-              className="group flex items-center gap-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-md"
+              className="group flex items-center gap-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 rounded-md"
               aria-label="FlowAI Home"
             >
-              <div className="w-8 h-8 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center transition-all duration-200 group-hover:border-brand-300 group-hover:bg-brand-100/80">
+              <div className="w-8 h-8 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center transition-all duration-200 group-hover:border-brand-300 group-hover:bg-brand-100">
                 <Layers className="w-4 h-4 text-brand-600 transition-transform duration-300 group-hover:rotate-6" />
               </div>
               <div className="flex flex-col">
@@ -64,14 +64,14 @@ export default function Navbar({ onLogoClick }: NavbarProps) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="px-3.5 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-md transition-colors duration-150 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-brand-500"
+                  className="px-3.5 py-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-md transition-colors duration-150 hover:bg-brand-50/50 focus-visible:ring-2 focus-visible:ring-brand-600"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
 
-            {/* Desktop Action CTA */}
+            {/* Desktop Action CTA Button */}
             <div className="hidden md:flex items-center gap-3">
               <a
                 href="#dashboard-preview"
@@ -81,7 +81,7 @@ export default function Navbar({ onLogoClick }: NavbarProps) {
               </a>
               <a
                 href="#cta"
-                className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white shadow-sm transition-all duration-200 hover:shadow-glow-sm active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-brand-400"
+                className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-600/20 transition-all duration-200 hover:shadow-brand-600/30 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-brand-600"
               >
                 <span>Start building</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -92,7 +92,7 @@ export default function Navbar({ onLogoClick }: NavbarProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-brand-600 hover:bg-brand-50 border border-slate-200 focus-visible:ring-2 focus-visible:ring-brand-600"
               aria-expanded={mobileMenuOpen}
               aria-label="Open menu"
             >
