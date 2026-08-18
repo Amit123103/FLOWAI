@@ -50,7 +50,7 @@ export default function ProductCapabilities() {
           </p>
         </div>
 
-        {/* Tab Navigation */}
+        {/* Tab Navigation Buttons in Maroon */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {PRODUCT_CAPABILITIES.map((cap) => {
             const Icon = capabilityIcons[cap.id as keyof typeof capabilityIcons];
@@ -61,13 +61,13 @@ export default function ProductCapabilities() {
                 type="button"
                 onClick={() => setActiveTab(cap.id as "build" | "evaluate" | "monitor")}
                 className={cn(
-                  "flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
+                  "flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600",
                   isActive
-                    ? "bg-white text-slate-900 border border-brand-600 shadow-md shadow-brand-500/15 ring-2 ring-brand-500/20"
-                    : "bg-white/80 text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-white shadow-sm"
+                    ? "bg-brand-600 hover:bg-brand-500 text-white border border-brand-600 shadow-md shadow-brand-600/25 ring-2 ring-brand-600/20"
+                    : "bg-white text-slate-700 hover:text-brand-700 border border-slate-200 hover:border-brand-300 hover:bg-brand-50/50 shadow-sm"
                 )}
               >
-                <Icon className={cn("w-4 h-4", isActive ? "text-brand-600" : "text-slate-400")} />
+                <Icon className={cn("w-4 h-4", isActive ? "text-white" : "text-brand-600")} />
                 <span>{cap.title}</span>
               </button>
             );

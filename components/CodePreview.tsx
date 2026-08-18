@@ -37,7 +37,7 @@ export default function CodePreview() {
         </div>
 
         <div className="flex items-center gap-1">
-          {/* Tabs */}
+          {/* Tabs Buttons */}
           <div className="flex items-center gap-1 bg-slate-800/80 p-0.5 rounded-lg border border-slate-700">
             {tabs.map((tab) => (
               <button
@@ -45,10 +45,10 @@ export default function CodePreview() {
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "px-3 py-1 text-xs font-mono rounded-md transition-colors",
+                  "px-3 py-1 text-xs font-mono rounded-md transition-all",
                   activeTab === tab.id
-                    ? "bg-slate-700 text-white font-semibold shadow-sm"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "bg-brand-600 hover:bg-brand-500 text-white font-bold shadow-sm"
+                    : "text-slate-400 hover:text-white hover:bg-slate-700/50"
                 )}
               >
                 {tab.label}
