@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 export default function ProductDashboard() {
   const [activeTab, setActiveTab] = useState<"graph" | "runs">("graph");
-  const [selectedNodeId, setSelectedNodeId] = useState<"input" | "model" | "evaluation" | "deploy">("model");
+  const [selectedNodeId, setSelectedNodeId] = useState<string>("model");
   const [sidebarItem, setSidebarItem] = useState("Overview");
 
   return (
