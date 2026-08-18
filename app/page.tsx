@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProductCapabilities from "@/components/ProductCapabilities";
@@ -14,10 +13,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 bg-grid-pattern selection:bg-brand-100 selection:text-brand-800">
-      {/* 1. Announcement Bar */}
-      <AnnouncementBar />
-
-      {/* 2. Sticky Navbar */}
+      {/* Sticky Navbar */}
       <Navbar />
 
       {/* Main Page Flow */}
