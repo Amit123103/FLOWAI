@@ -53,38 +53,31 @@ export default function Hero() {
   }, [isPlaying]);
 
   return (
-    <section className="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden" aria-labelledby="hero-heading">
+    <section className="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-heading">
       {/* 6 Dynamic Cycling Background Images (1-second delay transition) */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {HERO_BACKGROUNDS.map((bg, index) => {
           const isActive = index === currentIdx;
           return (
             <div
               key={bg.src}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                isActive ? "opacity-90 scale-100" : "opacity-0 scale-105 pointer-events-none"
+              className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                isActive ? "opacity-100 scale-100" : "opacity-0 scale-105"
               }`}
-              style={{
-                transitionProperty: "opacity, transform",
-                transitionDuration: "600ms",
-              }}
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={bg.src}
                 alt={bg.title}
-                fill
-                priority={index === 0}
-                className="object-cover object-center brightness-90 contrast-105"
-                sizes="100vw"
+                className="w-full h-full object-cover object-center brightness-90 contrast-110"
               />
             </div>
           );
         })}
 
         {/* Ambient Dark & Gradient Overlays for High Contrast Readability */}
-        <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[1px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-900/40 to-slate-950/90" />
-        <div className="absolute inset-0 bg-radial-gradient opacity-60 mix-blend-screen" />
+        <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-900/40 to-slate-950/95" />
       </div>
 
       <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
