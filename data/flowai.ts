@@ -303,22 +303,58 @@ export const HOW_IT_WORKS_STEPS = [
 ];
 
 export const CODE_SNIPPETS = {
-  workflow: `workflow.generate()
+  workflow: `// flowai.config.ts — Production Workflow Graph Definition
+import { defineWorkflow, llmNode, evalGate, edgeDeploy } from "@flowai/sdk";
 
+export const triagePipeline = defineWorkflow({
+  name: "support-triage-v2",
+  nodes: [
+    llmNode({
+      provider: "anthropic/claude-3-5-sonnet",
+      temperature: 0.3,
+      systemPrompt: "schemas/prompts/triage.md",
+    }),
+    evalGate({
+      suite: "security-and-hallucination",
+      threshold: 0.95,
+      failoverAction: "block_and_alert",
+    }),
+    edgeDeploy({
+      region: "global-anycast",
+      canaryWeight: 10,
+      autoRollbackOnLatencyMs: 600,
+    }),
+  ],
+});`,
+  prompt: `# triage.prompt.yaml — Context & Template Manifest
+version: "2.1"
+name: "customer-intent-triage"
 model:
-  provider: "flow-model"
-  temperature: 0.4
+  primary: "claude-3-5-sonnet"
+  fallback: "gemini-2-flash"
+  timeout_ms: 1200
 
-evaluation:
-  suite: "support-quality"
+system: |
+  You are FlowAI triage engine. Classify incoming tickets into JSON:
+  { intent: string, severity: HIGH | MED | LOW, routeTo: string }
 
-deployment:
-  environment: "production"`,
-  prompt: `prompt:
-  system: "You are a helpful assistant."
-  input: "{{user_message}}"`,
-  evaluation: `suite:
-  name: "support-quality"
-  cases: 48
-  threshold: 0.90`,
+inputs:
+  - name: user_query
+    type: string
+    sanitize: strict_regex`,
+  evaluation: `import pytest
+from flowai.evals import evaluate_pipeline, Assertions
+
+def test_triage_accuracy():
+    result = evaluate_pipeline(
+        pipeline="support-triage-v2",
+        dataset="./datasets/production_evals.jsonl",
+        metrics=[
+            Assertions.no_pii_leakage(),
+            Assertions.latency_p95_under(400),
+            Assertions.semantic_similarity_above(0.92),
+        ]
+    )
+    assert result.passed is True
+    print(f"Eval Pass Rate: {result.pass_rate * 100}%")`,
 };
