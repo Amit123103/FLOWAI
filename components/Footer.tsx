@@ -1,0 +1,119 @@
+"use client";
+
+import React from "react";
+import { Layers } from "lucide-react";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    product: [
+      { label: "Features", href: "#features" },
+      { label: "Workflow", href: "#workflow" },
+      { label: "Developer", href: "#developer" },
+      { label: "Pricing", href: "#cta" },
+    ],
+    resources: [
+      { label: "Documentation", href: "#developer" },
+      { label: "Changelog", href: "#showcase" },
+      { label: "Guides", href: "#workflow" },
+    ],
+    company: [
+      { label: "About", href: "#hero-heading" },
+      { label: "Contact", href: "#cta" },
+    ],
+  };
+
+  return (
+    <footer className="border-t border-slate-200 bg-slate-50 text-slate-600 py-12 md:py-16 text-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-slate-200">
+          {/* Logo & Tagline */}
+          <div className="md:col-span-2 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center">
+                <Layers className="w-3.5 h-3.5 text-brand-600" />
+              </div>
+              <span className="font-bold text-base text-slate-900 tracking-tight">FlowAI</span>
+            </div>
+            <p className="text-slate-600 max-w-sm text-xs leading-relaxed">
+              Build AI products without the infrastructure headache. A focused developer workspace for building, evaluating, deploying, and monitoring AI pipelines.
+            </p>
+            <div className="flex items-center gap-3 pt-2">
+              <span className="text-[11px] font-mono text-slate-500 font-medium">Developer Platform • Production Ready</span>
+            </div>
+          </div>
+
+          {/* Links: Product */}
+          <div>
+            <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3 font-mono">
+              Product
+            </h4>
+            <ul className="space-y-2">
+              {footerLinks.product.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="hover:text-slate-900 transition-colors duration-150 inline-block py-0.5"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Links: Resources */}
+          <div>
+            <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3 font-mono">
+              Resources
+            </h4>
+            <ul className="space-y-2">
+              {footerLinks.resources.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="hover:text-slate-900 transition-colors duration-150 inline-block py-0.5"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Links: Company */}
+          <div>
+            <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider mb-3 font-mono">
+              Company
+            </h4>
+            <ul className="space-y-2">
+              {footerLinks.company.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="hover:text-slate-900 transition-colors duration-150 inline-block py-0.5"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom copyright & attribution */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-slate-500">
+          <div>
+            © {currentYear} FlowAI. All rights reserved. UI Demonstration Assessment.
+          </div>
+          <div className="flex items-center gap-6">
+            <span className="hover:text-slate-900 cursor-pointer transition-colors">Privacy Policy</span>
+            <span className="hover:text-slate-900 cursor-pointer transition-colors">Terms of Service</span>
+            <span className="hover:text-slate-900 cursor-pointer transition-colors">Security</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
