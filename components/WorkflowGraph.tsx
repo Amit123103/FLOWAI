@@ -203,6 +203,9 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
     setOutputStream("");
   };
 
+  const activeNode =
+    nodes.find((n) => n.id === selectedNodeId) || nodes[0] || WORKFLOW_NODES[0];
+
   return (
     <div className="flex flex-col gap-5 w-full">
       {/* Top Simulator Control Bar */}
