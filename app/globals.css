@@ -36,12 +36,12 @@ body {
 }
 
 .bg-radial-gradient {
-  background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 65%);
+  background: radial-gradient(circle at 50% 0%, rgba(136, 19, 55, 0.07) 0%, transparent 65%);
 }
 
-/* Accessibility Focus Ring */
+/* Accessibility Focus Ring in Maroon */
 *:focus-visible {
-  outline: 2px solid #4F46E5;
+  outline: 2px solid #881337;
   outline-offset: 2px;
 }
 
