@@ -46,61 +46,57 @@ export default function Hero() {
 
     const interval = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % HERO_BACKGROUNDS.length);
-    }, 1000); // 1-second delay image transition
+    }, 1500); // 1.5-second delay image transition
 
     return () => clearInterval(interval);
   }, [isPlaying]);
 
   return (
-    <section className="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden bg-slate-950 text-white" aria-labelledby="hero-heading">
-      {/* 6 Dynamic Cycling Background Images (1-second delay transition) */}
+    <section className="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden" aria-labelledby="hero-heading">
+      {/* 6 Pure Cycling Background Images (1.5s delay transition, no black background color) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {HERO_BACKGROUNDS.map((bg, index) => {
           const isActive = index === currentIdx;
           return (
             <div
               key={bg.src}
-              className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                isActive ? "opacity-100 scale-100" : "opacity-0 scale-105"
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                isActive ? "opacity-100 scale-100" : "opacity-0 scale-100"
               }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={bg.src}
                 alt={bg.title}
-                className="w-full h-full object-cover object-center brightness-90 contrast-110"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           );
         })}
-
-        {/* Ambient Dark & Gradient Overlays for High Contrast Readability */}
-        <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[0.5px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-900/40 to-slate-950/95" />
       </div>
 
       <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Active Background Status / 6 Image Indicator Pill */}
         <div className="flex items-center justify-center mb-6">
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/15 shadow-xl text-xs text-white/90 font-mono">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-xl text-xs text-white font-mono">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
             </span>
             <span className="text-brand-300 font-semibold uppercase tracking-wider text-[11px]">
-              Visual Node {currentIdx + 1}/6:
+              Visual Node {currentIdx + 1}/6 (1.5s):
             </span>
-            <span className="text-slate-200 hidden sm:inline">{HERO_BACKGROUNDS[currentIdx].title}</span>
+            <span className="text-slate-100 hidden sm:inline">{HERO_BACKGROUNDS[currentIdx].title}</span>
 
             {/* 6 Mini Step Indicators */}
-            <div className="flex items-center gap-1 ml-1.5 pl-2 border-l border-white/10">
+            <div className="flex items-center gap-1 ml-1.5 pl-2 border-l border-white/20">
               {HERO_BACKGROUNDS.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentIdx(i)}
                   title={`Switch to image ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === currentIdx ? "w-5 bg-brand-400" : "w-1.5 bg-white/30 hover:bg-white/60"
+                    i === currentIdx ? "w-5 bg-brand-400" : "w-1.5 bg-white/40 hover:bg-white/70"
                   }`}
                   aria-label={`View background image ${i + 1}`}
                 />
@@ -110,19 +106,19 @@ export default function Hero() {
             {/* Play/Pause Control */}
             <button
               onClick={() => setIsPlaying((p) => !p)}
-              className="ml-1 text-slate-400 hover:text-white transition-colors"
-              title={isPlaying ? "Pause 1s rotation" : "Play 1s rotation"}
+              className="ml-1 text-slate-300 hover:text-white transition-colors"
+              title={isPlaying ? "Pause 1.5s rotation" : "Play 1.5s rotation"}
               aria-label={isPlaying ? "Pause rotation" : "Play rotation"}
             >
-              {isPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+              {isPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3 text-brand-400" />}
             </button>
           </div>
         </div>
 
-        {/* Hero Copy & Actions in a Frosted Ambient Glass Container */}
+        {/* Hero Copy & Actions */}
         <div className="max-w-4xl mx-auto text-center space-y-6">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-brand-500/30 text-xs font-mono tracking-wider uppercase text-brand-300 shadow-lg font-semibold">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-xs font-mono tracking-wider uppercase text-brand-300 shadow-xl font-semibold">
             <Sparkles className="w-3.5 h-3.5 text-brand-400 animate-pulse" />
             THE AI DEVELOPER WORKSPACE
           </div>
@@ -130,16 +126,16 @@ export default function Hero() {
           {/* Main Heading */}
           <h1
             id="hero-heading"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] drop-shadow-md"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] [text-shadow:_0_4px_24px_rgba(0,0,0,0.85),_0_1px_3px_rgba(0,0,0,0.9)]"
           >
             Ship AI products{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-rose-400 to-amber-200">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-brand-200 to-amber-200 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
               without the infrastructure headache.
             </span>
           </h1>
 
           {/* Supporting Text */}
-          <p className="text-base sm:text-lg md:text-xl text-slate-200/90 max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-sm">
+          <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-medium leading-relaxed [text-shadow:_0_2px_12px_rgba(0,0,0,0.9),_0_1px_2px_rgba(0,0,0,0.9)]">
             Build, evaluate, deploy, and monitor AI applications from one focused developer workspace.
           </p>
 
@@ -147,7 +143,7 @@ export default function Hero() {
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <a
               href="#cta"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-xl shadow-brand-900/50 hover:shadow-brand-600/40 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400 border border-brand-400/30"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-2xl hover:shadow-brand-600/50 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400 border border-brand-400/40"
             >
               <span>Start building</span>
               <ArrowRight className="w-4 h-4" />
@@ -155,7 +151,7 @@ export default function Hero() {
 
             <a
               href="#dashboard-preview"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/90 backdrop-blur-md border border-white/20 hover:border-brand-400/50 text-white font-medium text-sm shadow-lg transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-brand-400"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-white/30 hover:border-brand-400/60 text-white font-medium text-sm shadow-xl transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-brand-400"
             >
               <Terminal className="w-4 h-4 text-brand-400" />
               <span>Explore the workspace</span>
@@ -163,7 +159,7 @@ export default function Hero() {
           </div>
 
           {/* Small Supporting Line */}
-          <div className="pt-1 text-xs text-slate-300/80 font-mono tracking-wide">
+          <div className="pt-1 text-xs text-white/90 font-mono tracking-wide [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)]">
             Built for developers who want to move from experiment to production.
           </div>
         </div>
