@@ -2,18 +2,31 @@
 
 ## 1. Why this approach?
 
-I chose to build FlowAI as a premium AI developer workspace because the product naturally allows the interface itself to demonstrate the value of the product. Instead of relying on fabricated marketing claims, the landing page uses an interactive product dashboard, workflow visualization, and developer-oriented UI to communicate the product concept.
+I chose to build FlowAI as a premium AI developer workspace because
+the product itself can demonstrate the value of the landing page.
+Rather than relying on fabricated social proof, the interface uses
+an interactive dashboard and workflow visualization to communicate
+the product concept.
 
-I chose Next.js, React, TypeScript, and Tailwind CSS because they allowed me to build the responsive interface quickly while keeping the components maintainable and reusable.
+I chose Next.js, React, TypeScript, and Tailwind CSS because they
+provide a fast and maintainable approach for building a responsive
+component-based product experience.
 
 ## 2. Trade-off
 
-Because of the assessment time limit, I focused on the landing-page experience and interactive product demonstration rather than building a real backend, authentication, database, or deployment infrastructure.
+Because of the assessment time limit, I focused on creating a
+high-quality frontend experience and interactive product
+demonstration rather than implementing a real backend, authentication,
+database, AI execution engine, or payment system.
 
-With a full week, I would connect the dashboard to a real backend, add authentication, persistence, real AI workflow execution, and production monitoring.
+With additional development time, these systems could be connected
+to the frontend.
 
 ## 3. AI Usage
 
-I used AI tools to help with brainstorming, component structure, implementation suggestions, and debugging.
+AI tools were used for brainstorming, implementation assistance,
+component ideas, and debugging.
 
-I personally reviewed and verified the generated code, adjusted the visual design, tested responsive behavior at mobile and desktop widths, checked the interaction behavior, removed unnecessary elements, and made the final product and design decisions myself.
+The generated output was reviewed and modified during development.
+Responsive behavior, interactions, layout decisions, accessibility,
+and final implementation were verified directly against project requirements.

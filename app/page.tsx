@@ -1,67 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ProductShowcase from "@/components/ProductShowcase";
+import ProductCapabilities from "@/components/ProductCapabilities";
 import FeatureSection from "@/components/FeatureSection";
-import WorkflowSection from "@/components/WorkflowSection";
-import CodePreview from "@/components/CodePreview";
-import CTASection from "@/components/CTASection";
+import HowItWorks from "@/components/HowItWorks";
+import DeveloperExperience from "@/components/DeveloperExperience";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import EasterEgg from "@/components/EasterEgg";
 
 export default function Home() {
-  const [logoClickCount, setLogoClickCount] = useState(0);
-  const [easterEggTriggered, setEasterEggTriggered] = useState(false);
-
-  const handleLogoClick = () => {
-    const nextCount = logoClickCount + 1;
-    setLogoClickCount(nextCount);
-    if (nextCount >= 5) {
-      setEasterEggTriggered(true);
-      setLogoClickCount(0);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 bg-grid-pattern selection:bg-brand-100 selection:text-brand-800">
-      {/* Announcement Bar */}
+    <div className="min-h-screen flex flex-col bg-background text-foreground bg-grid-pattern selection:bg-brand-500/30 selection:text-brand-200">
+      {/* 1. Announcement Bar */}
       <AnnouncementBar />
 
-      {/* Sticky Navigation */}
-      <Navbar onLogoClick={handleLogoClick} />
+      {/* 2. Sticky Navbar */}
+      <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Page Flow */}
       <main id="main-content" className="flex-grow">
-        {/* 1. Hero Section + Interactive Product Visual */}
+        {/* 3. Hero Section (includes Interactive Product Dashboard) */}
         <Hero />
 
-        {/* 2. Product Showcase Section (Build / Evaluate / Monitor) */}
-        <ProductShowcase />
+        {/* 4. Product Capabilities (Build / Evaluate / Monitor) */}
+        <ProductCapabilities />
 
-        {/* 3. Feature Section (6 Platform Features) */}
+        {/* 5. Feature Section (6 Platform Features with Mini UIs) */}
         <FeatureSection />
 
-        {/* 4. How it Works / Workflow Section (01 Build / 02 Evaluate / 03 Ship) */}
-        <WorkflowSection />
+        {/* 6. How It Works (01 Build / 02 Evaluate / 03 Ship) */}
+        <HowItWorks />
 
-        {/* 5. Developer Experience Section (Code & Prompt Tabs) */}
-        <CodePreview />
+        {/* 7. Developer Experience (Code Editor with Tabs) */}
+        <DeveloperExperience />
 
-        {/* 6. CTA Section */}
-        <CTASection />
+        {/* 8. Final CTA */}
+        <FinalCTA />
       </main>
 
-      {/* 7. Footer */}
+      {/* 9. Footer */}
       <Footer />
-
-      {/* Optional Easter Egg */}
-      <EasterEgg
-        triggeredExternally={easterEggTriggered}
-        onClose={() => setEasterEggTriggered(false)}
-      />
     </div>
   );
 }
