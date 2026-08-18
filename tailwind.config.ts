@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#08090D",
-        foreground: "#F3F4F6",
+        background: "#FFFFFF",
+        foreground: "#0F172A",
         brand: {
           50: "#EEF2FF",
           100: "#E0E7FF",
@@ -23,22 +23,22 @@ const config: Config = {
           700: "#4338CA",
           800: "#3730A3",
           900: "#312E81",
-          DEFAULT: "#6366F1",
+          DEFAULT: "#4F46E5",
         },
         surface: {
-          50: "#1E2230",
-          100: "#161924",
-          200: "#11131B",
-          300: "#0C0E14",
-          400: "#07080B",
-          border: "#1F2332",
-          "border-subtle": "#171A26",
-          "border-bright": "#2E344A",
+          50: "#FFFFFF",
+          100: "#F8FAFC",
+          200: "#F1F5F9",
+          300: "#E2E8F0",
+          400: "#0F172A",
+          border: "#E2E8F0",
+          "border-subtle": "#F1F5F9",
+          "border-bright": "#CBD5E1",
         },
         muted: {
-          DEFAULT: "#8E94A8",
-          foreground: "#646A7E",
-          dark: "#454B5E",
+          DEFAULT: "#475569",
+          foreground: "#64748B",
+          dark: "#94A3B8",
         },
       },
       fontFamily: {
@@ -46,10 +46,10 @@ const config: Config = {
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       boxShadow: {
-        "glow-sm": "0 0 20px -5px rgba(99, 102, 241, 0.25)",
-        "glow-md": "0 0 35px -8px rgba(99, 102, 241, 0.35)",
-        "glow-lg": "0 0 60px -15px rgba(99, 102, 241, 0.45)",
-        "dashboard": "0 24px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08)",
+        "glow-sm": "0 0 20px -5px rgba(79, 70, 229, 0.15)",
+        "glow-md": "0 0 35px -8px rgba(79, 70, 229, 0.20)",
+        "glow-lg": "0 0 60px -15px rgba(79, 70, 229, 0.25)",
+        "dashboard": "0 20px 50px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.08)",
       },
       maxWidth: {
         global: "1280px",

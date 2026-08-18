@@ -14,16 +14,16 @@ export default function DashboardMetrics() {
         return (
           <div
             key={metric.label}
-            className="p-3.5 rounded-xl bg-surface-200 border border-surface-border transition-colors hover:border-surface-border-bright"
+            className="p-3.5 rounded-xl bg-white border border-slate-200 shadow-sm transition-colors hover:border-slate-300"
           >
-            <div className="flex items-center justify-between text-muted text-[11px]">
-              <span className="font-medium">{metric.label}</span>
-              <Icon className="w-3.5 h-3.5 text-brand-400" />
+            <div className="flex items-center justify-between text-slate-500 text-[11px]">
+              <span className="font-semibold">{metric.label}</span>
+              <Icon className="w-3.5 h-3.5 text-brand-600" />
             </div>
-            <div className="text-lg font-bold font-mono text-foreground mt-1 tracking-tight">
+            <div className="text-lg font-bold font-mono text-slate-900 mt-1 tracking-tight">
               {metric.value}
             </div>
-            <div className="text-[10px] text-emerald-400 flex items-center gap-1 mt-0.5 font-mono">
+            <div className="text-[10px] text-emerald-600 font-semibold flex items-center gap-1 mt-0.5 font-mono">
               <TrendingUp className="w-3 h-3" />
               <span>{metric.change}</span>
             </div>

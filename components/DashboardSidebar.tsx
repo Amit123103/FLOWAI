@@ -27,9 +27,9 @@ export default function DashboardSidebar({ activeItem, onSelectItem }: Dashboard
   ];
 
   return (
-    <aside className="hidden md:flex md:col-span-3 lg:col-span-2 flex-col justify-between border-r border-surface-border bg-surface-300/60 p-3.5 text-xs">
+    <aside className="hidden md:flex md:col-span-3 lg:col-span-2 flex-col justify-between border-r border-slate-200 bg-slate-50/70 p-3.5 text-xs">
       <div className="space-y-1">
-        <div className="px-2.5 py-1.5 text-[10px] font-mono font-medium text-muted-dark uppercase tracking-wider">
+        <div className="px-2.5 py-1.5 text-[10px] font-mono font-semibold text-slate-400 uppercase tracking-wider">
           Workspace
         </div>
         {sidebarLinks.map((item) => {
@@ -43,16 +43,16 @@ export default function DashboardSidebar({ activeItem, onSelectItem }: Dashboard
               className={cn(
                 "w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-left transition-all duration-150",
                 isActive
-                  ? "bg-surface-50 text-foreground font-semibold border border-surface-border-bright shadow-sm"
-                  : "text-muted hover:text-foreground hover:bg-surface-100/50"
+                  ? "bg-white text-slate-900 font-semibold border border-slate-200 shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
               )}
             >
               <div className="flex items-center gap-2.5">
-                <Icon className={cn("w-4 h-4", isActive ? "text-brand-400" : "text-muted")} />
+                <Icon className={cn("w-4 h-4", isActive ? "text-brand-600" : "text-slate-400")} />
                 <span>{item.name}</span>
               </div>
               {item.badge && (
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">
+                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-brand-50 text-brand-700 border border-brand-200 font-semibold">
                   {item.badge}
                 </span>
               )}
@@ -62,15 +62,15 @@ export default function DashboardSidebar({ activeItem, onSelectItem }: Dashboard
       </div>
 
       {/* Sidebar Footer Info */}
-      <div className="p-3 rounded-lg bg-surface-200 border border-surface-border space-y-2">
+      <div className="p-3 rounded-xl bg-white border border-slate-200 space-y-2 shadow-sm">
         <div className="flex items-center justify-between text-[11px]">
-          <span className="text-muted">Quota Usage</span>
-          <span className="font-mono text-foreground font-semibold">34%</span>
+          <span className="text-slate-500 font-medium">Quota Usage</span>
+          <span className="font-mono text-slate-900 font-bold">34%</span>
         </div>
-        <div className="w-full bg-surface-400 h-1.5 rounded-full overflow-hidden">
-          <div className="bg-brand-500 h-full w-[34%] rounded-full" />
+        <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+          <div className="bg-brand-600 h-full w-[34%] rounded-full" />
         </div>
-        <div className="text-[10px] text-muted-dark font-mono">1.2M / 3.5M tokens</div>
+        <div className="text-[10px] text-slate-400 font-mono">1.2M / 3.5M tokens</div>
       </div>
     </aside>
   );

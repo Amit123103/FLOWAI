@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground bg-grid-pattern selection:bg-brand-500/30 selection:text-brand-200">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 bg-grid-pattern selection:bg-brand-100 selection:text-brand-800">
       {/* 1. Announcement Bar */}
       <AnnouncementBar />
 

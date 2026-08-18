@@ -34,7 +34,7 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
 
               {/* Connecting arrow on desktop */}
               {index < WORKFLOW_NODES.length - 1 && (
-                <div className="hidden lg:flex absolute -right-2.5 top-1/2 -translate-y-1/2 z-10 text-muted-dark pointer-events-none">
+                <div className="hidden lg:flex absolute -right-2.5 top-1/2 -translate-y-1/2 z-10 text-slate-400 pointer-events-none">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               )}
@@ -43,7 +43,7 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
         })}
       </div>
 
-      {/* Primary Micro-Interaction Detail Panel (Section 22) */}
+      {/* Primary Micro-Interaction Detail Panel */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeNode.id}
@@ -51,21 +51,21 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.18, ease: "easeOut" }}
-          className="rounded-xl border border-surface-border bg-surface-200/90 p-4.5 shadow-inner"
+          className="rounded-xl border border-slate-200 bg-white p-4.5 shadow-sm"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-surface-border">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-lg bg-brand-500/10 text-brand-400 border border-brand-500/20">
+              <div className="p-2 rounded-lg bg-brand-50 text-brand-600 border border-brand-200">
                 <Cpu className="w-4 h-4" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-bold text-foreground">{activeNode.details.title}</h4>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-brand-500/15 text-brand-300 border border-brand-500/30 font-semibold">
+                  <h4 className="text-sm font-bold text-slate-900">{activeNode.details.title}</h4>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-brand-50 text-brand-700 border border-brand-200 font-semibold">
                     Node: {activeNode.title}
                   </span>
                 </div>
-                <p className="text-xs text-muted mt-0.5">{activeNode.details.description}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{activeNode.details.description}</p>
               </div>
             </div>
 
@@ -74,14 +74,14 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
               {activeNode.details.attributes.map((attr) => (
                 <div
                   key={attr.label}
-                  className="bg-surface-300 px-2.5 py-1 rounded-md border border-surface-border"
+                  className="bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200"
                 >
-                  <span className="text-muted">{attr.label}: </span>
+                  <span className="text-slate-500">{attr.label}: </span>
                   <span
                     className={
                       attr.highlight
-                        ? "text-emerald-400 font-semibold"
-                        : "text-foreground font-medium"
+                        ? "text-emerald-600 font-bold"
+                        : "text-slate-900 font-semibold"
                     }
                   >
                     {attr.value}
@@ -93,14 +93,14 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
 
           {/* Configuration Manifest */}
           <div className="mt-3.5">
-            <div className="flex items-center justify-between text-[11px] font-mono text-muted mb-1.5">
-              <span className="flex items-center gap-1.5 text-foreground/90 font-medium">
-                <Terminal className="w-3.5 h-3.5 text-brand-400" />
+            <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-1.5">
+              <span className="flex items-center gap-1.5 text-slate-800 font-semibold">
+                <Terminal className="w-3.5 h-3.5 text-brand-600" />
                 Live Node Manifest
               </span>
-              <span className="text-[10px] text-muted-dark">Interactive Micro-Interaction</span>
+              <span className="text-[10px] text-slate-400">Interactive Micro-Interaction</span>
             </div>
-            <pre className="p-3 rounded-lg bg-surface-400 border border-surface-border text-[11px] font-mono text-indigo-200 overflow-x-auto">
+            <pre className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono text-emerald-300 overflow-x-auto shadow-inner">
               <code>{activeNode.details.manifest}</code>
             </pre>
           </div>

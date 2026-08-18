@@ -24,21 +24,21 @@ export default function CodePreview() {
   };
 
   return (
-    <div className="rounded-2xl border border-surface-border-bright bg-surface-100 shadow-2xl overflow-hidden">
+    <div className="rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl overflow-hidden">
       {/* Editor Header & Tabs */}
-      <div className="flex flex-wrap items-center justify-between px-4 py-2.5 bg-surface-200 border-b border-surface-border gap-2">
+      <div className="flex flex-wrap items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800 gap-2">
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-500/50" />
-          <div className="w-3 h-3 rounded-full bg-amber-500/50" />
-          <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
-          <span className="ml-3 text-xs font-mono text-muted hidden sm:inline">
+          <div className="w-3 h-3 rounded-full bg-red-500/60" />
+          <div className="w-3 h-3 rounded-full bg-amber-500/60" />
+          <div className="w-3 h-3 rounded-full bg-emerald-500/60" />
+          <span className="ml-3 text-xs font-mono text-slate-400 hidden sm:inline">
             {tabs.find((t) => t.id === activeTab)?.file}
           </span>
         </div>
 
         <div className="flex items-center gap-1">
           {/* Tabs */}
-          <div className="flex items-center gap-1 bg-surface-300 p-0.5 rounded-lg border border-surface-border">
+          <div className="flex items-center gap-1 bg-slate-800/80 p-0.5 rounded-lg border border-slate-700">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -47,8 +47,8 @@ export default function CodePreview() {
                 className={cn(
                   "px-3 py-1 text-xs font-mono rounded-md transition-colors",
                   activeTab === tab.id
-                    ? "bg-surface-50 text-foreground font-semibold shadow-sm border border-surface-border"
-                    : "text-muted hover:text-foreground"
+                    ? "bg-slate-700 text-white font-semibold shadow-sm"
+                    : "text-slate-400 hover:text-slate-200"
                 )}
               >
                 {tab.label}
@@ -60,7 +60,7 @@ export default function CodePreview() {
           <button
             type="button"
             onClick={handleCopy}
-            className="p-1.5 rounded-md hover:bg-surface-300 text-muted hover:text-foreground transition-colors"
+            className="p-1.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
             title="Copy code snippet"
             aria-label="Copy code snippet"
           >
@@ -74,14 +74,14 @@ export default function CodePreview() {
       </div>
 
       {/* Code Content */}
-      <div className="p-4 sm:p-6 overflow-x-auto bg-surface-400 font-mono text-xs leading-relaxed text-slate-200">
+      <div className="p-4 sm:p-6 overflow-x-auto bg-slate-950 font-mono text-xs leading-relaxed text-slate-200">
         <pre tabIndex={0} className="focus:outline-none">
           <code>{CODE_SNIPPETS[activeTab]}</code>
         </pre>
       </div>
 
       {/* Bottom Status Bar */}
-      <div className="flex items-center justify-between px-4 py-2 bg-surface-300 border-t border-surface-border text-[11px] font-mono text-muted">
+      <div className="flex items-center justify-between px-4 py-2 bg-slate-900 border-t border-slate-800 text-[11px] font-mono text-slate-400">
         <div className="flex items-center gap-2">
           <Terminal className="w-3 h-3 text-brand-400" />
           <span>FlowAI Runtime: Validated</span>

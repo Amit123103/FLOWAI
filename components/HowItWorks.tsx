@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { HOW_IT_WORKS_STEPS } from "@/data/flowai";
-import { GitCommit, CheckCircle, ArrowDown } from "lucide-react";
+import { GitCommit, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function HowItWorks() {
@@ -11,23 +11,23 @@ export default function HowItWorks() {
   return (
     <section
       id="workflow"
-      className="py-20 md:py-32 border-t border-surface-border relative bg-surface-400/40"
+      className="py-20 md:py-32 border-t border-slate-200 relative bg-slate-50/60"
       aria-labelledby="workflow-heading"
     >
       <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-surface-200 border border-surface-border text-xs font-mono uppercase tracking-wider text-brand-300">
-            <GitCommit className="w-3.5 h-3.5 text-brand-400" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-xs font-mono uppercase tracking-wider text-brand-700 shadow-sm font-semibold">
+            <GitCommit className="w-3.5 h-3.5 text-brand-600" />
             Simple 3-Step Lifecycle
           </div>
           <h2
             id="workflow-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900"
           >
             From experiment to production in three clear steps.
           </h2>
-          <p className="text-base sm:text-lg text-muted">
+          <p className="text-base sm:text-lg text-slate-600">
             From local experiment to production endpoint in minutes, without fragile scripts.
           </p>
         </div>
@@ -35,7 +35,7 @@ export default function HowItWorks() {
         {/* 3 Steps with visual connecting line */}
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Visual connecting line for desktop */}
-          <div className="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-brand-500/20 via-brand-500/50 to-brand-500/20 -translate-y-12 pointer-events-none z-0" />
+          <div className="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-brand-200 via-brand-400 to-brand-200 -translate-y-12 pointer-events-none z-0" />
 
           {HOW_IT_WORKS_STEPS.map((step, idx) => {
             const isHovered = hoveredStep === idx;
@@ -45,10 +45,10 @@ export default function HowItWorks() {
                 onMouseEnter={() => setHoveredStep(idx)}
                 onMouseLeave={() => setHoveredStep(null)}
                 className={cn(
-                  "relative z-10 p-6 sm:p-8 rounded-2xl border transition-all duration-300 flex flex-col justify-between",
+                  "relative z-10 p-6 sm:p-8 rounded-2xl border transition-all duration-300 flex flex-col justify-between shadow-sm",
                   isHovered
-                    ? "bg-surface-100 border-brand-500/60 shadow-xl shadow-brand-500/5 translate-y-[-4px]"
-                    : "bg-surface-200/80 border-surface-border hover:border-surface-border-bright"
+                    ? "bg-white border-brand-500 shadow-xl shadow-brand-500/10 translate-y-[-4px]"
+                    : "bg-white border-slate-200 hover:border-slate-300"
                 )}
               >
                 <div>
@@ -57,28 +57,28 @@ export default function HowItWorks() {
                     <span
                       className={cn(
                         "font-mono text-3xl font-bold transition-colors duration-200",
-                        isHovered ? "text-brand-300 scale-105 inline-block" : "text-brand-400"
+                        isHovered ? "text-brand-700 scale-105 inline-block" : "text-brand-600"
                       )}
                     >
                       {step.number}
                     </span>
-                    <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-surface-300 text-muted border border-surface-border font-semibold uppercase">
+                    <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200 font-bold uppercase">
                       {step.label}
                     </span>
                   </div>
 
                   {/* Title & Tagline */}
-                  <h3 className="text-xl font-bold text-foreground tracking-tight">
+                  <h3 className="text-xl font-bold text-slate-900 tracking-tight">
                     {step.title}
                   </h3>
 
-                  <p className="text-sm text-muted mt-3 leading-relaxed">
+                  <p className="text-sm text-slate-600 mt-3 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-surface-border/60 text-xs text-muted-dark font-mono flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-600 font-mono flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>{step.detail}</span>
                 </div>
               </div>

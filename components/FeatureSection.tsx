@@ -11,17 +11,17 @@ export default function FeatureSection() {
       <div className="max-w-global mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-surface-200 border border-surface-border text-xs font-mono uppercase tracking-wider text-brand-300">
-            <Cpu className="w-3.5 h-3.5 text-brand-400" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-xs font-mono uppercase tracking-wider text-brand-700 shadow-sm font-semibold">
+            <Cpu className="w-3.5 h-3.5 text-brand-600" />
             Capabilities
           </div>
           <h2
             id="features-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900"
           >
             A workspace built around the way developers actually work.
           </h2>
-          <p className="text-base sm:text-lg text-muted">
+          <p className="text-base sm:text-lg text-slate-600">
             Eliminate fragmented tools, scattered prompts, and unmeasured quality regressions with a unified platform.
           </p>
         </div>
