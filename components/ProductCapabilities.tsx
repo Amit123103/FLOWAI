@@ -63,7 +63,7 @@ export default function ProductCapabilities() {
                 className={cn(
                   "flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
                   isActive
-                    ? "bg-white text-slate-900 border border-brand-500 shadow-md shadow-brand-500/10 ring-2 ring-brand-500/10"
+                    ? "bg-white text-slate-900 border border-brand-600 shadow-md shadow-brand-500/15 ring-2 ring-brand-500/20"
                     : "bg-white/80 text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-white shadow-sm"
                 )}
               >
@@ -79,7 +79,7 @@ export default function ProductCapabilities() {
           {/* Left Details */}
           <div className="lg:col-span-5 space-y-6">
             <div>
-              <span className="text-xs font-mono font-bold uppercase text-brand-600 tracking-wider">
+              <span className="text-xs font-mono font-bold uppercase text-brand-700 tracking-wider">
                 {current.title} Stage
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
@@ -127,7 +127,7 @@ export default function ProductCapabilities() {
 
                   <div className="p-3 rounded-lg bg-white border border-slate-200 flex items-center justify-between shadow-xs">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-indigo-600" />
+                      <div className="w-2 h-2 rounded-full bg-rose-700" />
                       <span className="text-slate-800 font-medium">Model: flow-model-core</span>
                     </div>
                     <div className="flex items-center gap-3 text-[11px] text-slate-500">
@@ -236,7 +236,7 @@ export default function ProductCapabilities() {
                       <span className="text-emerald-600 font-bold">740ms</span>
                     </div>
                     <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                      <div className="h-full bg-indigo-600 rounded-full w-[85%]" />
+                      <div className="h-full bg-rose-700 rounded-full w-[85%]" />
                     </div>
                   </div>
 

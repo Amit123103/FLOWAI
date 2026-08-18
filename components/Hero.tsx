@@ -25,7 +25,7 @@ export default function Hero() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08]"
           >
             Ship AI products{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-indigo-600 to-brand-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-rose-700 to-brand-500">
               without the infrastructure headache.
             </span>
           </h1>
@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <a
               href="#cta"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/20 hover:shadow-brand-600/30 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 hover:shadow-brand-600/35 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400"
             >
               <span>Start building</span>
               <ArrowRight className="w-4 h-4" />
