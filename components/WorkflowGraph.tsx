@@ -256,16 +256,46 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
         </div>
       </div>
 
-      {/* Visual Pipeline Nodes with Animated Particle Flow */}
+      {/* Pipeline Node Canvas Header & Add Node Controls */}
+      <div className="flex items-center justify-between gap-2 px-1">
+        <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
+          <Layers className="w-3.5 h-3.5 text-brand-600" />
+          <span className="font-bold">Active Pipeline: {nodes.length} Connected Nodes</span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setShowAddModal(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-700 text-xs font-mono font-bold transition-all shadow-xs hover:scale-105 active:scale-95"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span>+ Add Custom Node</span>
+          </button>
+
+          {nodes.length > 4 && (
+            <button
+              type="button"
+              onClick={handleResetNodes}
+              className="text-[11px] font-mono text-slate-400 hover:text-slate-700 transition-colors px-2 py-1"
+            >
+              Reset Default
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Visual Pipeline Nodes with Dynamic Flow */}
       <div className="relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 relative z-10">
           {nodes.map((node, index) => {
             const isSelected = node.id === selectedNodeId;
             const isDimmed = Boolean(selectedNodeId && !isSelected);
             const isCurrentlyExecuting = executingNodeIndex === index;
+            const isCustom = !["input", "model", "evaluation", "deploy"].includes(node.id);
 
             return (
-              <div key={node.id} className="relative flex flex-col">
+              <div key={node.id} className="relative flex flex-col group/card">
                 <WorkflowNode
                   node={node}
                   isSelected={isSelected}
@@ -273,6 +303,18 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
                   isExecuting={isCurrentlyExecuting}
                   onSelect={onSelectNode}
                 />
+
+                {/* Remove button for custom added nodes */}
+                {isCustom && (
+                  <button
+                    onClick={(e) => handleRemoveNode(node.id, e)}
+                    className="absolute -top-1.5 -left-1.5 opacity-0 group-hover/card:opacity-100 p-1 rounded-full bg-rose-600 text-white shadow-md hover:scale-110 transition-all z-30"
+                    title="Remove custom node"
+                    aria-label="Remove node"
+                  >
+                    <span className="text-[9px] font-bold block leading-none w-2 h-2 text-center">×</span>
+                  </button>
+                )}
 
                 {/* Connecting arrow on desktop */}
                 {index < nodes.length - 1 && (
@@ -285,6 +327,54 @@ export default function WorkflowGraph({ selectedNodeId, onSelectNode }: Workflow
           })}
         </div>
       </div>
+
+      {/* Add Custom Node Modal Dropdown */}
+      <AnimatePresence>
+        {showAddModal && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="p-4 rounded-xl border-2 border-brand-300 bg-brand-50/50 shadow-xl space-y-3"
+          >
+            <div className="flex items-center justify-between border-b border-brand-200 pb-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 font-mono">
+                <Sparkles className="w-4 h-4 text-brand-600" />
+                <span>Select Node Template to Insert into Pipeline</span>
+              </div>
+              <button
+                onClick={() => setShowAddModal(false)}
+                className="text-slate-400 hover:text-slate-700 text-xs font-mono font-bold"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {NODE_TEMPLATES.map((tmpl) => (
+                <button
+                  key={tmpl.id}
+                  type="button"
+                  onClick={() => handleAddNode(tmpl)}
+                  className="p-3 rounded-lg bg-white border border-brand-200 hover:border-brand-500 hover:shadow-md text-left transition-all group hover:scale-[1.02]"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-xs text-slate-900 group-hover:text-brand-600">
+                      {tmpl.title}
+                    </span>
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-brand-50 text-brand-700 border border-brand-200">
+                      {tmpl.badge}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 line-clamp-2">
+                    {tmpl.details.description}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Interactive Prompt & Live Execution Simulator Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
