@@ -9,6 +9,7 @@ import HowItWorks from "@/components/HowItWorks";
 import DeveloperExperience from "@/components/DeveloperExperience";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import WhatsAppChatbot from "@/components/WhatsAppChatbot";
 
 export default function Home() {
   return (
@@ -39,6 +40,9 @@ export default function Home() {
 
       {/* 9. Footer */}
       <Footer />
+
+      {/* 10. Floating WhatsApp AI Chatbot Assistant */}
+      <WhatsAppChatbot />
     </div>
   );
 }
