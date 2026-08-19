@@ -2,33 +2,36 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FlowAI — Ship AI Products Without the Infrastructure Headache",
+  title: "FlowAI Drone Shop — FPV Components, Industrial Drones, B2B & Services",
   description:
-    "FlowAI is a focused AI developer workspace for building, evaluating, deploying, and monitoring AI applications.",
+    "India's premier drone ecosystem: FPV components, DJI & heavy lift drones, ATL lab setups, training, and verified B2B wholesale platform.",
   keywords: [
-    "AI developer workspace",
-    "prompt engineering",
-    "LLM evaluation",
-    "AI observability",
-    "production AI deployment",
-    "FlowAI",
+    "FPV drones",
+    "DJI drones",
+    "Flight controllers",
+    "Brushless motors",
+    "Drone batteries",
+    "Drone lab setup",
+    "Atal Tinkering",
+    "B2B Drone wholesale",
+    "FlowAI Drone Shop",
   ],
   authors: [{ name: "FlowAI Team" }],
   creator: "FlowAI",
   openGraph: {
-    title: "FlowAI — Ship AI Products Without the Infrastructure Headache",
+    title: "FlowAI Drone Shop — FPV Components, Industrial Drones, B2B & Services",
     description:
-      "Build, evaluate, deploy, and monitor AI applications from one focused developer workspace.",
+      "India's premier drone ecosystem: FPV components, DJI & heavy lift drones, ATL lab setups, training, and verified B2B wholesale platform.",
     url: "https://flowai-workspace.dev",
-    siteName: "FlowAI",
+    siteName: "FlowAI Drone Shop",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FlowAI — Ship AI Products Without the Infrastructure Headache",
+    title: "FlowAI Drone Shop — FPV Components, Industrial Drones, B2B & Services",
     description:
-      "Build, evaluate, deploy, and monitor AI applications from one focused developer workspace.",
+      "India's premier drone ecosystem: FPV components, DJI & heavy lift drones, ATL lab setups, training, and verified B2B wholesale platform.",
   },
   robots: {
     index: true,
